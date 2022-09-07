@@ -1,0 +1,20 @@
+Project Requirements:
+    - React
+    - GitHub
+    - SCSS
+    - JavaScript
+    - HTML
+    - Axios? (can be replaced with SQL or UI/UX)
+
+One language/feature/framework that I did not learn in the course:
+    - Payment Processing
+    - Picture Carousel
+    - etc.
+
+Must build a Microservice App Process
+    - Backend is Python, Ruby, or other backend language
+    - Backend must communicate with front-end via API
+
+Must be mobile responsive
+
+Hosted on Heroku
