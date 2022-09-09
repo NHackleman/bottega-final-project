@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function pants() {
+function pants() {
 	return <div>Pants</div>;
 }
+
+export default pants;

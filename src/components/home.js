@@ -1,5 +1,10 @@
 import React from "react";
 
 export default function home() {
-	return <div>Homepage...</div>;
+	return (
+		// Body content goes here
+		<div>
+			<div>Hello</div>
+		</div>
+	);
 }
