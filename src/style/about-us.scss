@@ -1,0 +1,27 @@
+.about-us-container {
+    color: $logo-creme;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+
+
+    .about-us-body {
+        width: 50vw;
+    }
+
+    .about-us-header {
+        text-align: center;
+        font-weight: 900;
+        font-size: 50px;
+    }
+
+    p {
+        text-align: justify;
+        line-height: 2em;
+        margin-top: 15px;
+        font-size: 24px;
+        font-weight: bold;
+        text-indent: 10%;
+        
+    }
+}
