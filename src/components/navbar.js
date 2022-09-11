@@ -11,14 +11,11 @@ function navbar() {
 				<NavLink to="/" className="navbar-link">
 					Home
 				</NavLink>
-				<NavLink to="/shirts" className="navbar-link">
-					Shirts
+				<NavLink to="/merch" className="navbar-link">
+					Merch
 				</NavLink>
-				<NavLink to="/pants" className="navbar-link">
-					Pants
-				</NavLink>
-				<NavLink to="/hats" className="navbar-link">
-					Hats
+				<NavLink to="/about-us" className="navbar-link">
+					About Us
 				</NavLink>
 			</div>
 

@@ -4,9 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Navbar from "./navbar";
 import Home from "./home.js";
-import Shirts from "./shirts.js";
-import Pants from "./pants.js";
-import Hats from "./hats.js";
+import Merch from "./merch.js";
+import AboutUs from "./about-us.js";
 import NoMatch from "./no-match.js";
 
 import Icons from "../helpers/icons";
@@ -25,9 +24,8 @@ export default class App extends Component {
 
 					<Switch>
 						<Route exact path="/" component={Home} />
-						<Route path="/shirts" component={Shirts} />
-						<Route path="/pants" component={Pants} />
-						<Route path="/hats" component={Hats} />
+						<Route path="/merch" component={Merch} />
+						<Route path="/about-us" component={AboutUs} />
 						<Route path="*" component={NoMatch} />
 					</Switch>
 				</Router>
