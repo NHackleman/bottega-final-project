@@ -1,13 +1,14 @@
 import React from "react";
 
-const aboutUsStyles = {
-	backgroundImage: "url(/assets/controller.jpg)",
-	backgroundSize: "cover",
-};
+// const aboutUsStyles = {
+// 	backgroundImage: "url(/assets/controller.jpg)",
+// 	backgroundSize: "cover",
+// };
 
 function aboutUs() {
 	return (
-		<div className="about-us-container" style={aboutUsStyles}>
+		<div className="about-us-container" /*style={aboutUsStyles}*/>
+			<img src="/assets/controller.jpg" alt="Controller" />
 			<div className="about-us-body">
 				<div className="about-us-header">About Us</div>
 				<p>

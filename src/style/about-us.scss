@@ -1,15 +1,21 @@
 .about-us-container {
-    color: $logo-creme;
-    display: flex;
-    justify-content: center;
-    height: 100vh;
+    color: $logo-dark-peach;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
 
+    img {
+        margin: 100px 0 150px 0;
+        width: 40vw;
+    }
 
     .about-us-body {
-        width: 50vw;
+        width: 40vw;
     }
 
     .about-us-header {
+        margin-top: 100px;
         text-align: center;
         font-weight: 900;
         font-size: 50px;
