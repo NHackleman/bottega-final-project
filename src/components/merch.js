@@ -1,7 +1,12 @@
 import React from "react";
+import MerchFiltersSidebar from "./merch-filters-sidebar";
 
 function merch() {
-	return <div>Merch</div>;
+	return (
+		<div>
+			<MerchFiltersSidebar />
+		</div>
+	);
 }
 
 export default merch;
