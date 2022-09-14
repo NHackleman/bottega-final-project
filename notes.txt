@@ -18,3 +18,21 @@ Must build a Microservice App Process
 Must be mobile responsive
 
 Hosted on Heroku
+
+
+TUESDAY:
+ - Create Merch filters on left side of merch page
+ - Set up backend for user account creation
+
+WEDNESDAY:
+ - Populate Merch page with individual items
+ - Make Merch filters functional (use portfolio filters as reference)
+
+THURSDAY:
+ - Create functionality for user profile and shopping cart links
+    * Shopping cart should stay the same if not logged in
+    * If logged in, shopping cart should show number of items in cart (0 if no items added to cart)
+
+FRIDAY:
+ - Create home page
+ - Final touches on rest of site (media queries for mobile responsiveness)
