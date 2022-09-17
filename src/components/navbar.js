@@ -20,12 +20,12 @@ function navbar() {
 			</div>
 
 			<div className="icons-wrapper">
-				<a className="navbar-icon">
+				<NavLink to="/cart" className="shopping-cart-icon">
 					<FontAwesomeIcon icon="fa-solid fa-shopping-cart" />
-				</a>
-				<a className="navbar-icon">
+				</NavLink>
+				<NavLink to="/login" className="login-icon">
 					<FontAwesomeIcon icon="fa-solid fa-user" />
-				</a>
+				</NavLink>
 			</div>
 		</div>
 	);

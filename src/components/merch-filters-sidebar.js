@@ -3,17 +3,11 @@ import React, { Component } from "react";
 export default class MerchFiltersSidebar extends Component {
 	constructor() {
 		super();
-
-		// this.filterClicked = this.filterClicked.bind(this);
 	}
-
-	// filterClicked() {
-	// 	console.log("This filter was clicked");
-	// }
 
 	render() {
 		return (
-			<div className="merch-wrapper">
+			<div>
 				<div className="sidebar-wrapper">
 					<div className="merch-filters">
 						<div

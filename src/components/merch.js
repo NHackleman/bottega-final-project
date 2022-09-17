@@ -1,10 +1,16 @@
 import React from "react";
+
 import MerchFiltersSidebar from "./merch-filters-sidebar";
+import MerchBody from "./merch-body";
 
 function merch() {
 	return (
 		<div>
-			<MerchFiltersSidebar />
+			<div className="merch-page">
+				<MerchFiltersSidebar />
+
+				<MerchBody />
+			</div>
 		</div>
 	);
 }

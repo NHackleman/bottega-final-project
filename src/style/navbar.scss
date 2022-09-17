@@ -3,7 +3,7 @@
     grid-template-columns: 1fr 2fr 1fr;
     margin: 20px;
     background-color: $logo-peach;
-    border-radius: 25px;
+    border-radius: 15px;
     color: $logo-creme;
 
     img {
@@ -36,17 +36,30 @@
         align-items: center;
 
         // Add left-to-right slide transition effect instead of traditional hover effect
-        a {
+        .shopping-cart-icon {
             cursor: pointer;
             margin: 0 15px 0 15px;
+            color: $logo-creme;
             font-size: 35px;
             transition: 0.3s ease-in-out;
 
             &:hover {
                 color: $logo-dark-peach;
-                font-size: 40px;
+                font-size: 45px;
+            }
+        }
+
+        .login-icon {
+            cursor: pointer;
+            margin: 0 15px 0 15px;
+            color: $logo-creme;
+            font-size: 35px;
+            transition: 0.3s ease-in-out;
+
+            &:hover {
+                color: $logo-dark-peach;
+                font-size: 45px;
             }
         }
     }
 }
-
