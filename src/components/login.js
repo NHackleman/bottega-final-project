@@ -3,9 +3,18 @@ import React, { Component } from "react";
 class Login extends Component {
 	render() {
 		return (
-			<div>
-				<input type="email" />
-				<input type="password" />
+			<div className="login-page">
+				<div className="login-wrapper">
+					<h1>Login</h1>
+
+					<input type="email" placeholder="Email" />
+					<input type="password" placeholder="Password" />
+
+					<div className="bottom-buttons-wrapper">
+						<a className="create-account-link">Create Account</a>
+						<button className="login-button">Login</button>
+					</div>
+				</div>
 			</div>
 		);
 	}
