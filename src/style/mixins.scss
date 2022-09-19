@@ -1,0 +1,16 @@
+@mixin common-button {
+    height: 45px;
+    width: 100px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: $logo-peach;
+    font-weight: bold;
+    color: $logo-creme;
+    border-radius: 7px;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+        background-color: $logo-dark-peach;
+    }
+}

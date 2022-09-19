@@ -21,7 +21,6 @@ Hosted on Heroku
 
 
 TUESDAY:
- - Create Merch filters on left side of merch page
  - Set up backend for user account creation
 
 WEDNESDAY:

@@ -11,14 +11,7 @@ class Login extends Component {
 					<input type="password" placeholder="Password" />
 
 					<div className="bottom-buttons-wrapper">
-						<a
-							className="create-account-link"
-							onClick={() => {
-								console.log("Create account");
-							}}
-						>
-							Create Account
-						</a>
+						<a className="create-account-link">Create Account</a>
 						<button className="login-button">Login</button>
 					</div>
 				</div>

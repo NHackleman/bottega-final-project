@@ -40,11 +40,7 @@
             }
 
             .login-button {
-                cursor: pointer;
-                border: none;
-                background-color: $logo-peach;
-                font-weight: bold;
-                color: $logo-creme;
+                @include common-button;
             }
         }
     }
