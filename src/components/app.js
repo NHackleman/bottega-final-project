@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./navbar";
 import Home from "./home.js";
@@ -20,18 +20,25 @@ export default class App extends Component {
 	render() {
 		return (
 			<div className="container">
-				<Router>
-					<Navbar />
+				<Navbar />
 
-					<Switch>
-						<Route exact path="/" component={Home} />
-						<Route path="/merch" component={Merch} />
-						<Route path="/about-us" component={AboutUs} />
-						<Route path="/login" component={Login} />
-						<Route path="/cart" component={ShoppingCart} />
-						<Route path="*" component={NoMatch} />
-					</Switch>
-				</Router>
+				<Routes>
+					<Route exact path="/" element={<Home />} />
+					<Route path="/merch" element={<Merch />} />
+					<Route path="/about-us" element={<AboutUs />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/cart" element={<ShoppingCart />} />
+					<Route path="*" element={<NoMatch />} />
+
+					{/* <Switch> */}
+					{/* <Route exact path="/" component={Home} />
+					<Route path="/merch" component={Merch} />
+					<Route path="/about-us" component={AboutUs} />
+					<Route path="/login" component={Login} />
+					<Route path="/cart" component={ShoppingCart} />
+					<Route path="*" component={NoMatch} /> */}
+					{/* </Switch> */}
+				</Routes>
 			</div>
 		);
 	}
