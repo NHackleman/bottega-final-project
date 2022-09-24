@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Routes, Route } from "react-router-dom";
 
 import Navbar from "./navbar";
 import Home from "./home.js";
@@ -29,15 +29,6 @@ export default class App extends Component {
 					<Route path="/login" element={<Login />} />
 					<Route path="/cart" element={<ShoppingCart />} />
 					<Route path="*" element={<NoMatch />} />
-
-					{/* <Switch> */}
-					{/* <Route exact path="/" component={Home} />
-					<Route path="/merch" component={Merch} />
-					<Route path="/about-us" component={AboutUs} />
-					<Route path="/login" component={Login} />
-					<Route path="/cart" component={ShoppingCart} />
-					<Route path="*" component={NoMatch} /> */}
-					{/* </Switch> */}
 				</Routes>
 			</div>
 		);
