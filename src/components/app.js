@@ -20,15 +20,15 @@ export default class App extends Component {
 	render() {
 		return (
 			<div className="container">
-				<Navbar />
-
 				<Routes>
-					<Route exact path="/" element={<Home />} />
-					<Route path="/merch" element={<Merch />} />
-					<Route path="/about-us" element={<AboutUs />} />
-					<Route path="/login" element={<Login />} />
-					<Route path="/cart" element={<ShoppingCart />} />
-					<Route path="*" element={<NoMatch />} />
+					<Navbar />
+
+					<Route exact path="/" component={Home} />
+					<Route path="/merch" component={Merch} />
+					<Route path="/about-us" component={AboutUs} />
+					<Route path="/login" component={Login} />
+					<Route path="/cart" component={ShoppingCart} />
+					<Route path="*" component={NoMatch} />
 				</Routes>
 			</div>
 		);
