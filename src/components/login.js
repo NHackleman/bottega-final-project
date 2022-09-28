@@ -7,7 +7,7 @@ export default class Login extends Component {
 		this.state = {
 			email: "",
 			password: "",
-			// confirmPasswordInput: "",
+			confirmPassword: "",
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -15,13 +15,29 @@ export default class Login extends Component {
 	}
 
 	handleSubmit(event) {
-		console.log(
-			"Handle Submit",
-			this.state.email,
-			this.state.password
-			// this.state.confirmPasswordInput
-		);
 		event.preventDefault();
+
+		const regularExpression =
+			/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+		const pass = this.state.password;
+		let checkPassword = regularExpression.test(pass);
+
+		if (this.state.password !== this.state.confirmPassword) {
+			console.error("Passwords don't match. Try again.");
+		} else if (this.state.password.length < 8) {
+			console.error("Password too short. Try again");
+		} else if (!checkPassword) {
+			console.error(
+				"Passwords must contain at least one number and special character"
+			);
+		} else {
+			console.log(
+				"Success",
+				this.state.email,
+				this.state.password,
+				this.state.confirmPassword
+			);
+		}
 	}
 
 	handleChange(event) {
@@ -51,13 +67,13 @@ export default class Login extends Component {
 							value={this.state.password}
 							onChange={this.handleChange}
 						/>
-						{/* <input
+						<input
 							type="password"
 							name="confirmPassword"
 							placeholder="Confirm Password"
-							value={this.state.confirmPasswordInput}
+							value={this.state.confirmPassword}
 							onChange={this.handleChange}
-						/> */}
+						/>
 
 						<div className="bottom-buttons-wrapper">
 							<a className="login-link">Login</a>
