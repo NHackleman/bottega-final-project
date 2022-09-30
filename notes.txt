@@ -35,3 +35,5 @@ THURSDAY:
 FRIDAY:
  - Create home page
  - Final touches on rest of site (media queries for mobile responsiveness)
+
+**Firebase configurations seem to be correct. HandleSubmit not working properly**
