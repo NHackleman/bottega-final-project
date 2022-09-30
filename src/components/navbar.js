@@ -23,7 +23,7 @@ function navbar() {
 				<NavLink to="/cart" className="shopping-cart-icon">
 					<FontAwesomeIcon icon="fa-solid fa-shopping-cart" />
 				</NavLink>
-				<NavLink to="/login" className="login-icon">
+				<NavLink to="/create-account" className="login-icon">
 					<FontAwesomeIcon icon="fa-solid fa-user" />
 				</NavLink>
 			</div>

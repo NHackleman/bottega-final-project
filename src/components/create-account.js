@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { FirebaseApp, initializeApp } from "firebase/app";
 import "regenerator-runtime/runtime";
 import { getDatabase } from "firebase/database";
 import { NavLink } from "react-router-dom";
 
-export default class Login extends Component {
+export default class CreateAccount extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			email: "",
 			password: "",
+			confirmPassword: "",
 			apiKey: "AIzaSyDb8_bjxESZKK832EgKTShrcroy9byC8yM",
 			authDomain: "bottega-project-43055.firebaseapp.com",
 			projectId: "bottega-project-43055",
@@ -40,25 +41,29 @@ export default class Login extends Component {
 		event.preventDefault();
 		const auth = getAuth(this.app);
 
-		await signInWithEmailAndPassword(
-			auth,
-			this.state.email,
-			this.state.password
-		)
-			.then((userCredential) => {
-				const user = userCredential.user;
-				console.log(
-					"Success",
-					this.state.email,
-					this.state.password,
-					this.state.confirmPassword
-				);
-			})
-			.catch((error) => {
-				const errorCode = error.code;
-				const errorMessage = error.message;
-				alert("ERROR", errorCode, errorMessage);
-			});
+		if (this.state.password !== this.state.confirmPassword) {
+			alert("Passwords don't match. Try again.");
+		} else {
+			await createUserWithEmailAndPassword(
+				auth,
+				this.state.email,
+				this.state.password
+			)
+				.then((userCredential) => {
+					const user = userCredential.user;
+					console.log(
+						"Success",
+						this.state.email,
+						this.state.password,
+						this.state.confirmPassword
+					);
+				})
+				.catch((error) => {
+					const errorCode = error.code;
+					const errorMessage = error.message;
+					alert("ERROR", errorCode, errorMessage);
+				});
+		}
 	}
 
 	handleChange(event) {
@@ -69,9 +74,9 @@ export default class Login extends Component {
 
 	render() {
 		return (
-			<div className="login-page">
-				<div className="login-wrapper">
-					<h1>Login</h1>
+			<div className="create-account-page">
+				<div className="create-account-wrapper">
+					<h1>Create Account</h1>
 
 					<form onSubmit={this.handleSubmit}>
 						<input
@@ -88,16 +93,23 @@ export default class Login extends Component {
 							value={this.state.password}
 							onChange={this.handleChange}
 						/>
+						<input
+							type="password"
+							name="confirmPassword"
+							placeholder="Confirm Password"
+							value={this.state.confirmPassword}
+							onChange={this.handleChange}
+						/>
 
 						<div className="bottom-buttons-wrapper">
-							<NavLink
-								to="/create-account"
-								className="create-account-link"
+							<NavLink to="/login" className="login-link">
+								Login
+							</NavLink>
+							<button
+								type="submit"
+								className="create-account-button"
 							>
 								Create Account
-							</NavLink>
-							<button type="submit" className="login-button">
-								Login
 							</button>
 						</div>
 					</form>

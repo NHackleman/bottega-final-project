@@ -1,8 +1,8 @@
-.login-page {
+.create-account-page {
     display: flex;
     justify-content: center;
 
-    .login-wrapper {
+    .create-account-wrapper {
         height: 70vh;
         width: 250px;
         display: flex;
@@ -12,6 +12,7 @@
         h1 {
             margin-top: 100px;
             font-size: 3em;
+            text-align: center;
         }
 
         input {
@@ -27,7 +28,7 @@
             height: 40px;
             margin-top: 25px;
 
-            .create-account-link {
+            .login-link {
                 align-self: center;
                 font-size: 0.85em;
                 font-weight: bolder;
@@ -41,7 +42,7 @@
                 }
             }
 
-            .login-button {
+            .create-account-button {
                 @include common-button;
             }
         }

@@ -6,6 +6,7 @@ import Home from "./home.js";
 import Merch from "./merch.js";
 import AboutUs from "./about-us.js";
 import NoMatch from "./no-match.js";
+import CreateAccount from "./create-account.js";
 import Login from "./login.js";
 import ShoppingCart from "./shopping-cart.js";
 
@@ -26,6 +27,7 @@ export default class App extends Component {
 					<Route exact path="/" component={Home} />
 					<Route path="/merch" component={Merch} />
 					<Route path="/about-us" component={AboutUs} />
+					<Route path="/create-account" component={CreateAccount} />
 					<Route path="/login" component={Login} />
 					<Route path="/cart" component={ShoppingCart} />
 					<Route path="*" component={NoMatch} />
