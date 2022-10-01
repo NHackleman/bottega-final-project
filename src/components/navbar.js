@@ -24,7 +24,7 @@ function navbar() {
 					<FontAwesomeIcon icon="fa-solid fa-shopping-cart" />
 				</NavLink>
 				<NavLink to="/create-account" className="login-icon">
-					<FontAwesomeIcon icon="fa-solid fa-user" />
+					<FontAwesomeIcon icon="fa-solid fa-right-to-bracket" />
 				</NavLink>
 			</div>
 		</div>

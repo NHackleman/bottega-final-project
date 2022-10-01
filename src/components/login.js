@@ -47,12 +47,7 @@ export default class Login extends Component {
 		)
 			.then((userCredential) => {
 				const user = userCredential.user;
-				console.log(
-					"Success",
-					this.state.email,
-					this.state.password,
-					this.state.confirmPassword
-				);
+				console.log("Success", this.state.email, this.state.password);
 			})
 			.catch((error) => {
 				const errorCode = error.code;
