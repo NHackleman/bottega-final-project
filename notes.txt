@@ -36,4 +36,4 @@ FRIDAY:
  - Create home page
  - Final touches on rest of site (media queries for mobile responsiveness)
 
-**Firebase configurations seem to be correct. HandleSubmit not working properly**
+CORS Anywhere Url: https://vast-woodland-10845.herokuapp.com/

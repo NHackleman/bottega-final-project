@@ -1,6 +1,8 @@
 {
   "name": "react-redux-router",
   "version": "1.0.0",
+  "private": true,
+  "proxy": "http://localhost:5000/",
   "description": "Basic skeleton codebase for React/Redux/Router applications.",
   "engines": {
     "node": "14.14.0"
@@ -8,6 +10,7 @@
   "scripts": {
     "preinstall": "npm set audit false",
     "start": "webpack-dev-server --config webpack/dev.config.js --watch",
+    "start-backend": "cd ./src/backend/ && python app.py --no-debugger",
     "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --color",
     "heroku-postbuild": "npm run build",
     "precommit": "eslint src",
