@@ -1,42 +1,48 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { Component } from "react";
 import axios from "axios";
+
+import MerchItem from "./merch-item.js";
 
 class MerchBody extends Component {
 	constructor() {
 		super();
 
-		// const [data, setdata] = useState({
 		this.state = {
-			name: "",
-			about: "",
+			merchItems: [],
 		};
-
-		// });
 		const corsAnywhereUrl = "https://vast-woodland-10845.herokuapp.com/";
+
+		this.getMerchItems = this.getMerchItems.bind(this);
 	}
 
-	componentDidMount() {
+	getMerchItems() {
 		axios
-			.get(`http://localhost:5000/profile`)
+			.get(`http://localhost:5000/cart-items`)
 			.then((res) => {
 				this.setState({
-					name: res.data.name,
-					about: res.data.about,
+					merchItems: this.state.merchItems.concat(res.data),
 				});
-				console.log("Response", res);
+				console.log(this.state.merchItems);
 			})
 			.catch((err) => {
 				console.error("Fetch error", err);
 			});
 	}
 
+	componentWillMount() {
+		this.getMerchItems();
+	}
+
+	// Cannot find props in MerchItem
 	render() {
+		const merch_items = this.state.merchItems.map((merchItem) => {
+			return <MerchItem key={merchItem.id} merchItem={merchItem} />;
+		});
 		return (
 			<div>
 				<h1 className="api-data">API Data</h1>
 
-				<h3 className="api-data">{this.state.name}</h3>
-				<h3 className="api-data">{this.state.about}</h3>
+				<div className="content-container">{merch_items}</div>
 			</div>
 		);
 	}

@@ -3,8 +3,9 @@ import React, { Component } from "react";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { FirebaseApp, initializeApp } from "firebase/app";
 import "regenerator-runtime/runtime";
-import { getDatabase } from "firebase/database";
 import { NavLink } from "react-router-dom";
+
+import firebaseConfig from "./firebase";
 
 export default class CreateAccount extends Component {
 	constructor(props) {
@@ -14,54 +15,42 @@ export default class CreateAccount extends Component {
 			email: "",
 			password: "",
 			confirmPassword: "",
-			apiKey: "AIzaSyDb8_bjxESZKK832EgKTShrcroy9byC8yM",
-			authDomain: "bottega-project-43055.firebaseapp.com",
-			projectId: "bottega-project-43055",
-			storageBucket: "bottega-project-43055.appspot.com",
-			messagingSenderId: "64318185338",
-			appId: "1:64318185338:web:07b981438f21df1fe7c0c3",
 		};
 
-		const app = initializeApp({
-			apiKey: this.state.apiKey,
-			authDomain: this.state.authDomain,
-			projectId: this.state.projectId,
-			storageBucket: this.state.storageBucket,
-			messagingSenderId: this.state.messagingSenderId,
-			appId: this.state.appId,
-		});
-
-		const db = getDatabase(app);
+		const app = initializeApp(firebaseConfig);
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+	handleSuccessfulAuth() {
+		this.props.handleSuccessfulLogin();
+		this.props.history.push("/");
+	}
+
+	handleUnsuccessfulAuth() {
+		this.props.handleUnsuccessfulLogin();
+	}
+
 	async handleSubmit(event) {
 		event.preventDefault();
 		const auth = getAuth(this.app);
+		const userEmail = this.state.email;
+		const userPassword = this.state.password;
 
 		if (this.state.password !== this.state.confirmPassword) {
 			alert("Passwords don't match. Try again.");
 		} else {
-			await createUserWithEmailAndPassword(
-				auth,
-				this.state.email,
-				this.state.password
-			)
+			await createUserWithEmailAndPassword(auth, userEmail, userPassword)
 				.then((userCredential) => {
 					const user = userCredential.user;
-					console.log(
-						"Success",
-						this.state.email,
-						this.state.password,
-						this.state.confirmPassword
-					);
+					
+					console.log("Success");
 				})
 				.catch((error) => {
 					const errorCode = error.code;
 					const errorMessage = error.message;
-					alert("ERROR", errorCode, errorMessage);
+					console.error("Custom error", errorCode, errorMessage);
 				});
 		}
 	}
