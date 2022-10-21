@@ -1,7 +1,7 @@
 import React from "react";
 
-import MerchFiltersSidebar from "./merch-filters-sidebar";
-import MerchBody from "./merch-body";
+import MerchFiltersSidebar from "../merch/merch-filters-sidebar";
+import MerchBody from "../merch/merch-body";
 
 function merch() {
 	return (

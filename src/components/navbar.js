@@ -1,12 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	getAuth,
-	createUserWithEmailAndPassword,
-	signOut,
-	signInWithEmailAndPassword,
-} from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+
+import auth from "./auth/firebase.js";
 
 // const loginIcon = () => {
 // 	return (
@@ -28,17 +25,28 @@ import {
 // 	);
 // };
 
-const dynamicLink = (route, icon) => {
-	return (
-		<div>
-			<NavLink to={route} className="login-icon">
-				<FontAwesomeIcon icon={icon} />
-			</NavLink>
-		</div>
-	);
-};
+// const dynamicLink = (route, icon) => {
+// 	return (
+// 		<div>
+// 			<NavLink to={route} className="login-icon">
+// 				<FontAwesomeIcon icon={icon} />
+// 			</NavLink>
+// 		</div>
+// 	);
+// };
 
 function navbar(props) {
+	// const [user, setUser] = useState({});
+
+	// onAuthStateChanged(auth, (user) => {
+	// 	// setUser(currentUser);
+	// 	if (user) {
+	// 		const uid = user.uid;
+	// 		console.log(uid);
+	// 	} else {
+	// 		console.log("Signed Out");
+	// 	}
+	// });
 	return (
 		<div className="navbar-wrapper">
 			<img src="./assets/Peach-Poutine.png" alt="Main Logo" />
@@ -63,12 +71,12 @@ function navbar(props) {
 					<FontAwesomeIcon icon="fa-solid fa-right-to-bracket" />
 				</NavLink> */}
 				{/* {props.loggedInStatus === "LOGGED_IN" ? logoutIcon : loginIcon} */}
-				{props.loggedInStatus === "NOT_LOGGED_IN"
+				{/* {props.loggedInStatus === "NOT_LOGGED_IN"
 					? dynamicLink(
 							"/create-account",
 							"fa-solid fa-right-to-bracket"
 					  )
-					: dynamicLink("/", "fa-solid fa-right-from-bracket")}
+					: dynamicLink("/", "fa-solid fa-right-from-bracket")} */}
 			</div>
 		</div>
 	);

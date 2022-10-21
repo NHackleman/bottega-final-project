@@ -1,14 +1,23 @@
 import React, { Component } from "react";
-import { BrowserRouter as Routes, Route } from "react-router-dom";
+import { BrowserRouter as Routes, Route, Switch } from "react-router-dom";
+import { useState } from "react";
+import {
+	createUserWithEmailAndPassword,
+	getAuth,
+	onAuthStateChanged,
+} from "firebase/auth";
+import "regenerator-runtime/runtime";
 
 import Navbar from "./navbar";
-import Home from "./home.js";
-import Merch from "./merch.js";
-import AboutUs from "./about-us.js";
-import NoMatch from "./no-match.js";
-import CreateAccount from "./create-account.js";
-import Login from "./login.js";
-import ShoppingCart from "./shopping-cart.js";
+import Home from "./pages/home.js";
+import Merch from "./pages/merch.js";
+import AboutUs from "./pages/about-us.js";
+import NoMatch from "./pages/no-match.js";
+import CreateAccount from "./auth/create-account.js";
+import Login from "./auth/login.js";
+import ShoppingCart from "./pages/shopping-cart.js";
+
+import auth from "./auth/firebase.js";
 
 import Icons from "../helpers/icons";
 
@@ -16,59 +25,35 @@ export default class App extends Component {
 	constructor(props) {
 		super(props);
 
-		Icons();
-
 		this.state = {
-			loggedInStatus: "NOT_LOGGED_IN",
+			email: "",
+			password: "",
 		};
-	}
 
-	handleSuccessfulLogin() {
-		this.setState({
-			loggedInStatus: "LOGGED_IN",
-		});
-	}
+		// onAuthStateChanged(auth, (currentUser) => {
+		// 	setUser(currentUser);
+		// });
 
-	handleSuccessfulLogout() {
-		this.setState({
-			loggedInStatus: "NOT_LOGGED_IN",
-		});
+		Icons();
 	}
 
 	render() {
 		return (
 			<div className="container">
 				<Routes>
-					<Navbar loggedInStatus={this.state.loggedInStatus} />
-					<Route exact path="/" component={Home} />
-					<Route path="/merch" component={Merch} />
-					<Route path="/about-us" component={AboutUs} />
-					<Route
-						path="/create-account"
-						// render={(props) => {
-						// 	<CreateAccount
-						// 		{...props}
-						handleSuccessfulLogin={this.handleSuccessfulLogin}
-						handleUnsuccessfulLogin={this.handleUnsuccessfulLogin}
-						component={CreateAccount}
-					/>
-					<Route
-						path="/login"
-						render={(props) => {
-							<Login
-								{...props}
-								handleSuccessfulLogin={
-									this.handleSuccessfulLogin
-								}
-								handleUnsuccessfulLogin={
-									this.handleUnsuccessfulLogin
-								}
-							/>;
-						}}
-						component={Login}
-					/>
-					<Route path="/cart" component={ShoppingCart} />
-					<Route path="*" component={NoMatch} />
+					<Navbar />
+					<Switch>
+						<Route exact path="/" component={Home} />
+						<Route path="/merch" component={Merch} />
+						<Route path="/about-us" component={AboutUs} />
+						<Route
+							path="/create-account"
+							component={CreateAccount}
+						/>
+						<Route path="/login" component={Login} />
+						<Route path="/cart" component={ShoppingCart} />
+						<Route path="*" component={NoMatch} />
+					</Switch>
 				</Routes>
 			</div>
 		);
