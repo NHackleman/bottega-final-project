@@ -20,8 +20,6 @@ Must be mobile responsive
 Hosted on Heroku
 
 
-TUESDAY:
- - Set up backend for user account creation
 
 WEDNESDAY:
  - Populate Merch page with individual items
@@ -37,3 +35,6 @@ FRIDAY:
  - Final touches on rest of site (media queries for mobile responsiveness)
 
 CORS Anywhere Url: https://vast-woodland-10845.herokuapp.com/
+
+TO DO:
+ - Clear email and password fields when user logs in/creates account

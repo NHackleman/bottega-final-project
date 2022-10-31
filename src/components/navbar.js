@@ -1,52 +1,52 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut, getAuth } from "firebase/auth";
 
-import auth from "./auth/firebase.js";
-
-// const loginIcon = () => {
-// 	return (
-// 		<div>
-// 			<NavLink to="/create-account" activeClassName="login-icon">
-// 				<FontAwesomeIcon icon="fa-solid fa-right-to-bracket" />
-// 			</NavLink>
-// 		</div>
-// 	);
-// };
-
-// const logoutIcon = () => {
-// 	return (
-// 		<div>
-// 			<NavLink to="/" activeClassName="login-icon">
-// 				<FontAwesomeIcon icon="fa-solid fa-right-from-bracket" />
-// 			</NavLink>
-// 		</div>
-// 	);
-// };
-
-// const dynamicLink = (route, icon) => {
-// 	return (
-// 		<div>
-// 			<NavLink to={route} className="login-icon">
-// 				<FontAwesomeIcon icon={icon} />
-// 			</NavLink>
-// 		</div>
-// 	);
-// };
+import { auth } from "./auth/firebase.js";
 
 function navbar(props) {
-	// const [user, setUser] = useState({});
+	const [user, setUser] = useState({});
+	const auth = getAuth();
 
-	// onAuthStateChanged(auth, (user) => {
-	// 	// setUser(currentUser);
-	// 	if (user) {
-	// 		const uid = user.uid;
-	// 		console.log(uid);
-	// 	} else {
-	// 		console.log("Signed Out");
-	// 	}
-	// });
+	onAuthStateChanged(auth, (currentUser) => {
+		setUser(currentUser);
+	});
+
+	const logout = async () => {
+		await signOut(auth);
+		console.log("Signed Out...");
+	};
+
+	const loginIcon = () => {
+		return (
+			<div>
+				<NavLink to="/create-account" className="login-icon">
+					<FontAwesomeIcon icon="fa-solid fa-user" />
+				</NavLink>
+			</div>
+		);
+	};
+
+	const logoutIcon = () => {
+		return (
+			<div>
+				<NavLink to="/" onClick={logout} className="login-icon">
+					<FontAwesomeIcon icon="fa-solid fa-right-from-bracket" />
+				</NavLink>
+			</div>
+		);
+	};
+
+	const dynamicLink = (route, icon) => {
+		return (
+			<div>
+				<NavLink to={route} className="login-icon">
+					<FontAwesomeIcon icon={icon} />
+				</NavLink>
+			</div>
+		);
+	};
 	return (
 		<div className="navbar-wrapper">
 			<img src="./assets/Peach-Poutine.png" alt="Main Logo" />
@@ -67,16 +67,8 @@ function navbar(props) {
 				<NavLink to="/cart" className="shopping-cart-icon">
 					<FontAwesomeIcon icon="fa-solid fa-shopping-cart" />
 				</NavLink>
-				{/* <NavLink to="/create-account" className="login-icon">
-					<FontAwesomeIcon icon="fa-solid fa-right-to-bracket" />
-				</NavLink> */}
 				{/* {props.loggedInStatus === "LOGGED_IN" ? logoutIcon : loginIcon} */}
-				{/* {props.loggedInStatus === "NOT_LOGGED_IN"
-					? dynamicLink(
-							"/create-account",
-							"fa-solid fa-right-to-bracket"
-					  )
-					: dynamicLink("/", "fa-solid fa-right-from-bracket")} */}
+				{user ? logoutIcon() : loginIcon()}
 			</div>
 		</div>
 	);

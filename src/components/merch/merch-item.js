@@ -1,15 +1,16 @@
 import React from "react";
 
 const merchItem = (props) => {
-	const { id, name, pictureUrl, price, type } = props.merchItem;
-
+	const { name, pictureUrl, price } = props.item;
 	return (
-		<div>
-			<h3>{id}</h3>
-			<h3>{name}</h3>
-			<h3>{pictureUrl}</h3>
-			<h3>{price}</h3>
-			<h3>{type}</h3>
+		<div className="merch-items">
+			<div className="merch-item">
+				<img src={pictureUrl} />
+				<div className="item-text">
+					<div>{name}</div>
+					<div>${price}</div>
+				</div>
+			</div>
 		</div>
 	);
 };
