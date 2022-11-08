@@ -4,6 +4,8 @@ import {
 	faCartShopping,
 	faRightFromBracket,
 	faPlus,
+	faCheck,
+	faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
@@ -13,7 +15,9 @@ const Icons = () => {
 		faUserAlt,
 		faCartShopping,
 		faRightFromBracket,
-		faPlus
+		faPlus,
+		faCheck,
+		faCircleXmark
 	);
 };
 

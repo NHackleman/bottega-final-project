@@ -6,13 +6,14 @@ import {
 	getAuth,
 } from "firebase/auth";
 import { NavLink } from "react-router-dom";
+import app from "./firebase";
 
 function login() {
 	const [loginEmail, setloginEmail] = useState("");
 	const [loginPassword, setloginPassword] = useState("");
 
 	const [user, setUser] = useState({});
-	const auth = getAuth();
+	const auth = getAuth(app);
 
 	onAuthStateChanged(auth, (currentUser) => {
 		setUser(currentUser);
@@ -26,6 +27,7 @@ function login() {
 				loginPassword
 			);
 			console.log(user);
+			window.sessionStorage.setItem("email", user.user.email);
 		} catch (error) {
 			console.error("Create User error...", error.message);
 		}

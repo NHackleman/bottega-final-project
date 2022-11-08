@@ -5,15 +5,15 @@ import {
 	onAuthStateChanged,
 	getAuth,
 } from "firebase/auth";
-import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import app from "./firebase";
 
 function createAccount() {
 	const [registerEmail, setRegisterEmail] = useState("");
 	const [registerPassword, setRegisterPassword] = useState("");
 
 	const [user, setUser] = useState({});
-	const auth = getAuth();
+	const auth = getAuth(app);
 
 	onAuthStateChanged(auth, (currentUser) => {
 		setUser(currentUser);

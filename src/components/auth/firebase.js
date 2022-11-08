@@ -2,15 +2,15 @@ import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-	apiKey: "AIzaSyDb8_bjxESZKK832EgKTShrcroy9byC8yM",
-	authDomain: "bottega-project-43055.firebaseapp.com",
-	projectId: "bottega-project-43055",
-	storageBucket: "bottega-project-43055.appspot.com",
-	messagingSenderId: "64318185338",
-	appId: "1:64318185338:web:07b981438f21df1fe7c0c3",
+	apiKey: "AIzaSyB0bZR9xBhRcnbM47uDHtlIWDEKTpaJAKs",
+	authDomain: "new-bottega-project.firebaseapp.com",
+	projectId: "new-bottega-project",
+	storageBucket: "new-bottega-project.appspot.com",
+	messagingSenderId: "554495744987",
+	appId: "1:554495744987:web:4c729131fd30edad9aa5fe",
+	measurementId: "G-LMW112YWNR",
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 
-export default auth;
+export default app;

@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { onAuthStateChanged, signOut, getAuth } from "firebase/auth";
-
-import { auth } from "./auth/firebase.js";
+import app from "./auth/firebase";
 
 function navbar(props) {
 	const [user, setUser] = useState({});
-	const auth = getAuth();
+	const auth = getAuth(app);
 
 	onAuthStateChanged(auth, (currentUser) => {
 		setUser(currentUser);
@@ -38,15 +37,6 @@ function navbar(props) {
 		);
 	};
 
-	const dynamicLink = (route, icon) => {
-		return (
-			<div>
-				<NavLink to={route} className="login-icon">
-					<FontAwesomeIcon icon={icon} />
-				</NavLink>
-			</div>
-		);
-	};
 	return (
 		<div className="navbar-wrapper">
 			<img src="./assets/Peach-Poutine.png" alt="Main Logo" />

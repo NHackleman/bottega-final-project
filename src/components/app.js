@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useContext, useEffect, useState } from "react";
 import { BrowserRouter as Routes, Route, Switch } from "react-router-dom";
 import "regenerator-runtime/runtime";
 import { getAuth, onAuthStateChanged, getCurrentUser } from "firebase/auth";
@@ -12,41 +12,27 @@ import CreateAccount from "./auth/create-account.js";
 import Login from "./auth/login.js";
 import ShoppingCart from "./pages/shopping-cart.js";
 
+import { CartItemsContext } from "../helpers/cart-items-context";
 import Icons from "../helpers/icons";
 import auth from "./auth/firebase";
+import axios from "axios";
+import app from "./auth/firebase";
 
-export default class App extends Component {
-	constructor() {
-		super();
+function App() {
+	const { cartItemList, setCartItemList } = useState([]);
+	const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN");
 
-		this.state = {
-			email: "",
-			password: "",
-			loggedInStatus: "",
-		};
+	Icons();
 
-		Icons();
-	}
-
-	handleLogin() {
-		this.setState({
-			loggedInStatus: "LOGGED_IN",
-		});
-	}
-
-	handleLogout() {
-		this.setState({
-			loggedInStatus: "NOT_LOGGED_IN",
-		});
-	}
-
-	getLoggedInStatus() {
+	function getLoggedInStatus() {
 		try {
-			const auth = getAuth();
+			const auth = getAuth(app);
 			onAuthStateChanged(auth, (user) => {
 				if (user) {
+					setLoggedInStatus("LOGGED_IN");
 					console.log("Logged In");
 				} else {
+					setLoggedInStatus("NOT_LOGGED_IN");
 					console.log("Not Logged In");
 				}
 			});
@@ -56,33 +42,27 @@ export default class App extends Component {
 		}
 	}
 
-	componentWillMount() {
-		this.getLoggedInStatus;
-	}
+	useEffect(() => {
+		getLoggedInStatus;
+	}, []);
 
-	componentWillUnmount() {
-		console.warn("Successfully Logged Out");
-	}
+	return (
+		<div className="container">
+			<Routes>
+				<Navbar loggedInStatus={loggedInStatus} />
+				<Switch>
+					<Route exact path="/" component={Home} />
+					<Route path="/merch" component={Merch} />
+					<Route path="/about-us" component={AboutUs} />
+					<Route path="/create-account" component={CreateAccount} />
+					<Route path="/login" component={Login} />
 
-	render() {
-		return (
-			<div className="container">
-				<Routes>
-					<Navbar loggedInStatus={this.state.loggedInStatus} />
-					<Switch>
-						<Route exact path="/" component={Home} />
-						<Route path="/merch" component={Merch} />
-						<Route path="/about-us" component={AboutUs} />
-						<Route
-							path="/create-account"
-							component={CreateAccount}
-						/>
-						<Route path="/login" component={Login} />
-						<Route path="/cart" component={ShoppingCart} />
-						<Route path="*" component={NoMatch} />
-					</Switch>
-				</Routes>
-			</div>
-		);
-	}
+					<Route path="/cart" component={ShoppingCart} />
+					<Route path="*" component={NoMatch} />
+				</Switch>
+			</Routes>
+		</div>
+	);
 }
+
+export default App;

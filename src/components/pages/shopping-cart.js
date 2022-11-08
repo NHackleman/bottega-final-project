@@ -1,32 +1,86 @@
-import React, { Component } from "react";
+import axios from "axios";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {
+	collection,
+	getDocs,
+	getFirestore,
+	deleteDoc,
+	doc,
+} from "firebase/firestore";
+import React, { useContext, useEffect, useState } from "react";
+import app from "../auth/firebase";
 
-class ShoppingCart extends Component {
-	constructor() {
-		super();
+import CartItem from "../cart/cart-item";
 
-		this.state = {
-			itemCount: 0,
-			cartTotalPrice: 0,
+function shoppingCart() {
+	let total = 0;
+	let i = -1;
+	const [merchItems, setMerchItems] = useState([]);
+	const db = getFirestore(app);
+	const dbInstance = collection(db, "shopping-cart");
+
+	useEffect(() => {
+		const fetchItems = async () => {
+			const data = await getDocs(dbInstance);
+
+			// data.docs.map((item) => {
+			// 	// return { ...item.data(), id: item.id };
+			// 	// merchItems.push(item.data());
+			// 	setMerchItems((merchItems) => [
+			// 		...merchItems,
+			// 		{ ...item.data(), id: item.id },
+			// 	]);
+			// });
+			setMerchItems(
+				data.docs.map((item) => {
+					return { ...item.data(), id: item.id };
+				})
+			);
 		};
-	}
-	render() {
-		return (
-			<div className="cart-page">
-				<div className="cart-wrapper">
-					<div className="cart-items-column">
-						<h3 className="cart-title">Your Cart Items:</h3>
-					</div>
 
-					<div className="checkout-column">
-						<button className="checkout-button">Checkout</button>
-						<h3 className="total-price">
-							Total: ${this.state.cartTotalPrice}
-						</h3>
-					</div>
-				</div>
+		fetchItems().catch((err) => {
+			console.error("Data fetch error", err);
+		});
+	});
+
+	function display() {
+		console.log(merchItems);
+	}
+
+	const itemList = merchItems.map((item) => {
+		// return { ...item.data(), id: item.id };
+		i += 1;
+		return <CartItem key={i} item={item} />;
+	});
+
+	const cartPrices = merchItems.map((item) => {
+		total += Number(item.price);
+		i += 1;
+		return (
+			<div key={i}>
+				<div>{item.name}</div>
+				<div>${item.price}.00</div>
 			</div>
 		);
-	}
+	});
+
+	return (
+		<div className="cart-page">
+			<div className="cart-wrapper">
+				<div className="cart-items-column">
+					<h3 className="cart-title">Your Cart Items:</h3>
+					<div>{itemList}</div>
+					<button onClick={display}>Get Items</button>
+				</div>
+
+				<div className="checkout-column">
+					<button className="checkout-button">Checkout</button>
+					<h3 className="total-price">Total: ${total}.00</h3>
+					<div>{cartPrices}</div>
+				</div>
+			</div>
+		</div>
+	);
 }
 
-export default ShoppingCart;
+export default shoppingCart;

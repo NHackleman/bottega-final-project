@@ -1,0 +1,27 @@
+.cart-item-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px black solid;
+
+    .item-name {
+        margin-left: 25px;
+        font-weight: 700;
+    }
+
+    img {
+        height: 150px;
+    }
+
+    .delete-icon {
+        padding: 5px;
+        height: 25px;
+        color: $logo-peach;
+        transition: 0.1s ease-in-out;
+
+        &:hover {
+            color: $logo-dark-peach;
+            cursor: pointer;
+        }
+    }
+}
