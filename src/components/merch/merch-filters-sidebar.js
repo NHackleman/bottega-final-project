@@ -1,54 +1,35 @@
 import React, { Component } from "react";
 
-export default class MerchFiltersSidebar extends Component {
-	constructor() {
-		super();
+function merchFiltersSidebar(props) {
+	function setShirtFilter() {
+		props.handleShirtFilter();
 	}
 
-	render() {
-		return (
-			<div>
-				<div className="sidebar-wrapper">
-					<div className="merch-filters">
-						<div
-							className="merch-filter"
-							onClick={() => {
-								console.log("button clicked");
-							}}
-						>
-							Shirts
-						</div>
-						<div
-							className="merch-filter"
-							onClick={() => {
-								console.log("button clicked");
-							}}
-						>
-							Pants
-						</div>
-						<div
-							className="merch-filter"
-							onClick={() => {
-								console.log("button clicked");
-							}}
-						>
-							Hats
-						</div>
-						<div
-							className="merch-filter"
-							onClick={() => {
-								console.log("button clicked");
-							}}
-						>
-							Misc
-						</div>
+	function setPantsFilter() {
+		props.handlePantsFilter();
+	}
+
+	function setMiscFilter() {
+		props.handleMiscFilter();
+	}
+
+	return (
+		<div>
+			<div className="sidebar-wrapper">
+				<div className="merch-filters">
+					<div onClick={setShirtFilter} className="merch-filter">
+						Shirts
+					</div>
+					<div onClick={setPantsFilter} className="merch-filter">
+						Pants
+					</div>
+					<div onClick={setMiscFilter} className="merch-filter">
+						Misc
 					</div>
 				</div>
-
-				<div className="merch-items-wrapper">
-					<div>Merch goes here</div>
-				</div>
 			</div>
-		);
-	}
+		</div>
+	);
 }
+
+export default merchFiltersSidebar;

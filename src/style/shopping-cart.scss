@@ -28,10 +28,16 @@
             display: flex;
             flex-direction: column-reverse;
             align-items: flex-end;
-            padding: 50px;
+            padding: 30px;
 
-            .total-price {
-                padding-right: 15px;
+            .checkout-item {
+                display: flex;
+                justify-content: space-between;
+                padding-bottom: 15px;
+
+                .checkout-item-name {
+                    padding-right: 150px;
+                }
             }
 
             .checkout-button {

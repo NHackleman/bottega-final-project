@@ -1,5 +1,3 @@
-import axios from "axios";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
 	collection,
 	getDocs,
@@ -23,14 +21,6 @@ function shoppingCart() {
 		const fetchItems = async () => {
 			const data = await getDocs(dbInstance);
 
-			// data.docs.map((item) => {
-			// 	// return { ...item.data(), id: item.id };
-			// 	// merchItems.push(item.data());
-			// 	setMerchItems((merchItems) => [
-			// 		...merchItems,
-			// 		{ ...item.data(), id: item.id },
-			// 	]);
-			// });
 			setMerchItems(
 				data.docs.map((item) => {
 					return { ...item.data(), id: item.id };
@@ -41,14 +31,9 @@ function shoppingCart() {
 		fetchItems().catch((err) => {
 			console.error("Data fetch error", err);
 		});
-	});
-
-	function display() {
-		console.log(merchItems);
-	}
+	}, [merchItems]);
 
 	const itemList = merchItems.map((item) => {
-		// return { ...item.data(), id: item.id };
 		i += 1;
 		return <CartItem key={i} item={item} />;
 	});
@@ -57,8 +42,8 @@ function shoppingCart() {
 		total += Number(item.price);
 		i += 1;
 		return (
-			<div key={i}>
-				<div>{item.name}</div>
+			<div key={i} className="checkout-item">
+				<div className="checkout-item-name">{item.name}</div>
 				<div>${item.price}.00</div>
 			</div>
 		);
@@ -70,7 +55,6 @@ function shoppingCart() {
 				<div className="cart-items-column">
 					<h3 className="cart-title">Your Cart Items:</h3>
 					<div>{itemList}</div>
-					<button onClick={display}>Get Items</button>
 				</div>
 
 				<div className="checkout-column">

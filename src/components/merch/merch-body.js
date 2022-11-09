@@ -1,33 +1,12 @@
 import axios from "axios";
-import { getAuth } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import app from "../auth/firebase.js";
 
 import MerchItem from "./merch-item.js";
 
-function merchBody() {
-	const [items, setItems] = useState([]);
+function merchBody(props) {
 	let i = -1;
-	const itemList = [];
 
-	useEffect(() => {
-		axios({
-			method: "GET",
-			url: "http://localhost:5000/cart-items",
-		})
-			.then((res) => {
-				res.data.map((item) => {
-					itemList.push(item);
-					// setItems((itemList) => [...itemList, item]);
-				});
-				setItems(itemList);
-			})
-			.catch((err) => {
-				console.error(err);
-			});
-	}, []);
-
-	const merchItems = items.map((merchItem) => {
+	const merchItems = props.items.map((merchItem) => {
 		i += 1;
 		return <MerchItem key={i} item={merchItem} />;
 	});

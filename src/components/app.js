@@ -15,7 +15,6 @@ import ShoppingCart from "./pages/shopping-cart.js";
 import { CartItemsContext } from "../helpers/cart-items-context";
 import Icons from "../helpers/icons";
 import auth from "./auth/firebase";
-import axios from "axios";
 import app from "./auth/firebase";
 
 function App() {
