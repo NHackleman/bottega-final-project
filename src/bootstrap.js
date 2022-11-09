@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import { BrowserRouter } from "react-router-dom";
 
-import AppWrapper from "./components/app-wrapper.js";
 import App from "./components/app.js";
 import reducers from "./reducers";
 
@@ -16,7 +15,7 @@ function main() {
 	ReactDOM.render(
 		<Provider store={createStoreWithMiddleware(reducers)}>
 			<BrowserRouter>
-				<AppWrapper />
+				<App />
 			</BrowserRouter>
 		</Provider>,
 		document.querySelector(".app-wrapper")

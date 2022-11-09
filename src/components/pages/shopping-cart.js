@@ -1,16 +1,12 @@
-import {
-	collection,
-	getDocs,
-	getFirestore,
-	deleteDoc,
-	doc,
-} from "firebase/firestore";
-import React, { useContext, useEffect, useState } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 import app from "../auth/firebase";
 
 import CartItem from "../cart/cart-item";
 
 function shoppingCart() {
+	const auth = getAuth();
 	let total = 0;
 	let i = -1;
 	const [merchItems, setMerchItems] = useState([]);
@@ -18,18 +14,22 @@ function shoppingCart() {
 	const dbInstance = collection(db, "shopping-cart");
 
 	useEffect(() => {
-		const fetchItems = async () => {
-			const data = await getDocs(dbInstance);
+		onAuthStateChanged(auth, (currentUser) => {
+			if (currentUser) {
+				const fetchItems = async () => {
+					const data = await getDocs(dbInstance);
 
-			setMerchItems(
-				data.docs.map((item) => {
-					return { ...item.data(), id: item.id };
-				})
-			);
-		};
+					setMerchItems(
+						data.docs.map((item) => {
+							return { ...item.data(), id: item.id };
+						})
+					);
+				};
 
-		fetchItems().catch((err) => {
-			console.error("Data fetch error", err);
+				fetchItems().catch((err) => {
+					console.error("Data fetch error", err);
+				});
+			}
 		});
 	}, [merchItems]);
 

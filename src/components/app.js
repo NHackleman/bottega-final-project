@@ -12,13 +12,10 @@ import CreateAccount from "./auth/create-account.js";
 import Login from "./auth/login.js";
 import ShoppingCart from "./pages/shopping-cart.js";
 
-import { CartItemsContext } from "../helpers/cart-items-context";
 import Icons from "../helpers/icons";
-import auth from "./auth/firebase";
 import app from "./auth/firebase";
 
 function App() {
-	const { cartItemList, setCartItemList } = useState([]);
 	const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN");
 
 	Icons();

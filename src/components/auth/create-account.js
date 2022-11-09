@@ -27,11 +27,12 @@ function createAccount(props) {
 				registerEmail,
 				registerPassword
 			);
+			props.history.push("/");
 			console.log(user);
 		} catch (error) {
 			console.error("Create User error...", error.message);
+			alert("Email or Password not compatible");
 		}
-		props.history.push("/");
 	};
 
 	return (
