@@ -14,7 +14,7 @@ function merch(props) {
 		if (filter === "CLEAR") {
 			axios({
 				method: "GET",
-				url: "http://localhost:5000/merch-items",
+				url: "https://nph-capstone-backend.herokuapp.com/merch-items",
 			})
 				.then((res) => {
 					res.data.map((item) => {
@@ -28,7 +28,7 @@ function merch(props) {
 		} else if (filter === "SHIRTS") {
 			axios({
 				method: "GET",
-				url: "http://localhost:5000/merch-items/shirt",
+				url: "https://nph-capstone-backend.herokuapp.com/merch-items/shirt",
 			})
 				.then((res) => {
 					res.data.map((item) => {
@@ -42,7 +42,7 @@ function merch(props) {
 		} else if (filter === "PANTS") {
 			axios({
 				method: "GET",
-				url: "http://localhost:5000/merch-items/pants",
+				url: "https://nph-capstone-backend.herokuapp.com/merch-items/pants",
 			})
 				.then((res) => {
 					res.data.map((item) => {
@@ -56,7 +56,7 @@ function merch(props) {
 		} else if (filter === "MISC") {
 			axios({
 				method: "GET",
-				url: "http://localhost:5000/merch-items/misc",
+				url: "https://nph-capstone-backend.herokuapp.com/merch-items/misc",
 			})
 				.then((res) => {
 					res.data.map((item) => {
