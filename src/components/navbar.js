@@ -49,7 +49,7 @@ function navbar(props) {
 					Merch
 				</NavLink>
 				<NavLink to="/about-us" className="navbar-link">
-					About Us
+					About
 				</NavLink>
 			</div>
 

@@ -2,10 +2,23 @@
     color: black;
 
     .merch-item {
-        width: 300px;
-        height: 375px;
+        height: 24em;
+        width: 19em;
         border: 2px black solid;
         border-radius: 5px;
+        @media screen and (max-width: 700px) {
+            height: 19em;
+            width: 12em;
+        }
+
+        img {
+            height: 19em;
+            width: 19em;
+            @media screen and (max-width: 700px) {
+                height: 13em;
+                width: 12em;
+            }
+        }
 
         .item-text {
             display: flex;
@@ -27,11 +40,5 @@
                 }
             }
         }
-    }
-
-    img {
-        height: 300px;
-        width: 300px;
-        overflow: hidden;
     }
 }
