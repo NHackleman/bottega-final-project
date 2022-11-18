@@ -1,4 +1,4 @@
-# React/Redux/Router Starter Project
+# Nathan Hackleman Capstone Project for Devcamp at Bottega
 
 > Provided for the students of the [Bottega Code School](https://bottega.tech/)
 
