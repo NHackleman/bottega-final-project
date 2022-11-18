@@ -6,7 +6,7 @@ export default function home() {
 			<h1 className="home-title">Peach Poutine Gaming</h1>
 			<img
 				className="home-logo"
-				src="https://scontent.flnk2-1.fna.fbcdn.net/v/t39.30808-6/315061569_2587449884731396_851618903385961790_n.jpg?stp=dst-jpg_p960x960&_nc_cat=102&ccb=1-7&_nc_sid=0debeb&_nc_ohc=mCsE_cOgb3gAX915OHN&tn=6mIc5RdBlq3EELHL&_nc_ht=scontent.flnk2-1.fna&oh=00_AfAYbXn9DC92ghLP8ogSFRTbMDimGW7PrdG1VFw27YQWcA&oe=636F7981"
+				src="https://imgur.com/mB1cGDL"
 			/>
 			<div className="social-icons-wrapper">
 				<a href="https://www.tiktok.com/@peachpoutinegaming">
